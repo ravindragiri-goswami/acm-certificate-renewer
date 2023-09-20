@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  dotnet-acm-cert-renewer-lambda:
+    image: arc/dotnet-acm-cert-renewer-lambda
+    build:
+      context: .
+      dockerfile: ACM.Certificate.Renewer.Lambda/Dockerfile

@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACM.Certificate.Renewer.Lambda", "ACM.Certificate.Renewer.Lambda\ACM.Certificate.Renewer.Lambda.csproj", "{CA004877-114D-4905-B035-B0C7C1EE1513}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iac", "iac", "{AE319826-1775-44CB-8049-C79A03A54BB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{E4839AE0-525C-438F-B0C8-C09D9D6F24EB}"
+	ProjectSection(SolutionItems) = preProject
+		iac\terraform\dev.tfvars = iac\terraform\dev.tfvars
+		iac\terraform\locals.tf = iac\terraform\locals.tf
+		iac\terraform\main.tf = iac\terraform\main.tf
+		iac\terraform\outputs.tf = iac\terraform\outputs.tf
+		iac\terraform\prod.tfvars = iac\terraform\prod.tfvars
+		iac\terraform\README.md = iac\terraform\README.md
+		iac\terraform\variables.tf = iac\terraform\variables.tf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ecr", "ecr", "{C60F2B66-9D4A-4115-A21D-13487072AB9A}"
+	ProjectSection(SolutionItems) = preProject
+		iac\terraform\ecr\main.tf = iac\terraform\ecr\main.tf
+		iac\terraform\ecr\outputs.tf = iac\terraform\ecr\outputs.tf
+		iac\terraform\ecr\README.md = iac\terraform\ecr\README.md
+		iac\terraform\ecr\variables.tf = iac\terraform\ecr\variables.tf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lambda", "lambda", "{1A83AC08-3EE0-4F01-A36D-4F9B7937DC1A}"
+	ProjectSection(SolutionItems) = preProject
+		iac\terraform\lambda\locals.tf = iac\terraform\lambda\locals.tf
+		iac\terraform\lambda\main.tf = iac\terraform\lambda\main.tf
+		iac\terraform\lambda\outputs.tf = iac\terraform\lambda\outputs.tf
+		iac\terraform\lambda\README.md = iac\terraform\lambda\README.md
+		iac\terraform\lambda\variables.tf = iac\terraform\lambda\variables.tf
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA004877-114D-4905-B035-B0C7C1EE1513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA004877-114D-4905-B035-B0C7C1EE1513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA004877-114D-4905-B035-B0C7C1EE1513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA004877-114D-4905-B035-B0C7C1EE1513}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4839AE0-525C-438F-B0C8-C09D9D6F24EB} = {AE319826-1775-44CB-8049-C79A03A54BB1}
+		{C60F2B66-9D4A-4115-A21D-13487072AB9A} = {E4839AE0-525C-438F-B0C8-C09D9D6F24EB}
+		{1A83AC08-3EE0-4F01-A36D-4F9B7937DC1A} = {E4839AE0-525C-438F-B0C8-C09D9D6F24EB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F906D84A-9530-4287-B24B-94F47C4970BA}
+	EndGlobalSection
+EndGlobal
