@@ -43,49 +43,50 @@ resource "aws_lambda_function" "this" {
 ################################################################################
 ## iam
 ################################################################################
+# TODO: kms commented
 ## cloudwatch kms
-data "aws_iam_policy_document" "cw_kms_key" {
-  version = "2012-10-17"
+# data "aws_iam_policy_document" "cw_kms_key" {
+#   version = "2012-10-17"
 
-  statement {
-    effect = "Allow"
+#   statement {
+#     effect = "Allow"
 
-    principals {
-      identifiers = ["logs.${var.region}.amazonaws.com"]
-      type        = "Service"
-    }
+#     principals {
+#       identifiers = ["logs.${var.region}.amazonaws.com"]
+#       type        = "Service"
+#     }
 
-    actions = [
-      "kms:Decrypt*",
-      "kms:Encrypt*",
-      "kms:GenerateDataKey*",
-      "kms:DescribeKey",
-      "kms:RequestAlias",
-      "kms:ReEncrypt*",
-      "kms:ListAliases"
-    ]
+#     actions = [
+#       "kms:Decrypt*",
+#       "kms:Encrypt*",
+#       "kms:GenerateDataKey*",
+#       "kms:DescribeKey",
+#       "kms:RequestAlias",
+#       "kms:ReEncrypt*",
+#       "kms:ListAliases"
+#     ]
 
-    resources = ["*"]
+#     resources = ["*"]
 
-  }
+#   }
 
-  statement {
-    effect = "Allow"
+#   statement {
+#     effect = "Allow"
 
-    principals {
-      identifiers = local.kms_key_admin_arns
-      type        = "AWS"
-    }
+#     principals {
+#       identifiers = local.kms_key_admin_arns
+#       type        = "AWS"
+#     }
 
-    // * is required to avoid this error from the API - MalformedPolicyDocumentException: The new key policy will not allow you to update the key policy in the future.
-    actions = [
-      "kms:*"
-    ]
+#     // * is required to avoid this error from the API - MalformedPolicyDocumentException: The new key policy will not allow you to update the key policy in the future.
+#     actions = [
+#       "kms:*"
+#     ]
 
-    // * is required to avoid this error from the API - MalformedPolicyDocumentException: The new key policy will not allow you to update the key policy in the future.
-    resources = ["*"]
-  }
-}
+#     // * is required to avoid this error from the API - MalformedPolicyDocumentException: The new key policy will not allow you to update the key policy in the future.
+#     resources = ["*"]
+#   }
+# }
 
 ## lambda
 data "aws_iam_policy_document" "lambda_assume_role_document" {
@@ -154,7 +155,8 @@ resource "aws_iam_role_policy_attachment" "lambda_vpc_access_execution" {
 resource "aws_cloudwatch_log_group" "lambda_cw_log_group" {
   name              = "/aws/lambda/${var.lambda_name}"
   retention_in_days = var.lambda_cw_log_group_retention_in_days
-  kms_key_id        = aws_kms_key.cw.arn
+  # TODO: kms commented
+  #kms_key_id        = aws_kms_key.cw.arn
 
   lifecycle {
     create_before_destroy = false
@@ -167,14 +169,15 @@ resource "aws_cloudwatch_log_group" "lambda_cw_log_group" {
 ################################################################################
 ## kms
 ################################################################################
-resource "aws_kms_key" "cw" {
-  description             = "KMS key used for CloudWatch log encryption"
-  deletion_window_in_days = var.kms_key_deletion_window_in_days
-  policy                  = data.aws_iam_policy_document.cw_kms_key.json
-  enable_key_rotation     = true
-}
+# TODO: kms commented
+# resource "aws_kms_key" "cw" {
+#   description             = "KMS key used for CloudWatch log encryption"
+#   deletion_window_in_days = var.kms_key_deletion_window_in_days
+#   policy                  = data.aws_iam_policy_document.cw_kms_key.json
+#   enable_key_rotation     = true
+# }
 
-resource "aws_kms_alias" "cw" {
-  name          = local.cw_kms_alias
-  target_key_id = aws_kms_key.cw.id
-}
+# resource "aws_kms_alias" "cw" {
+#   name          = local.cw_kms_alias
+#   target_key_id = aws_kms_key.cw.id
+# }

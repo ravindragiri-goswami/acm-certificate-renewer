@@ -40,12 +40,16 @@ module "tags" {
 ## ECR
 ################################################################################
 module "ecr" {
+  count       = var.create_ecr_repository ? 1 : 0
   source      = "./ecr"
   environment = var.environment
   namespace   = var.namespace
   region      = var.region
 }
 
+data "aws_caller_identity" "current_caller" {}
+
+data "aws_region" "current" {}
 
 ################################################################################
 ## lambda
@@ -58,7 +62,7 @@ module "cron" {
   lambda_memory  = 128
   lambda_timeout = 120
   lambda_package_type = "Image"
-  image_uri    = "155094422229.dkr.ecr.us-east-1.amazonaws.com/arc-dev-dotnet-acm-certificate-renewer-lambda:latest"
+  image_uri    = "${data.aws_caller_identity.current_caller.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/arc-dev-dotnet-acm-cert-renewer-lambda:latest"
 
   #vpc_config = local.vpc_config
 

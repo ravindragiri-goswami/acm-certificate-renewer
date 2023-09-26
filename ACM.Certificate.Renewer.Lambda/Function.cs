@@ -61,7 +61,7 @@ public class Function
         if (listCertificatesResponse.CertificateSummaryList.Count > 0)
         {
             var certificatesCloseToExpire = FilterCertificateEligibileForRenew(listCertificatesResponse);
-            context.Logger.LogInformation($"Total {listCertificatesResponse.CertificateSummaryList.Count} certificates close to expire found.");
+            context.Logger.LogInformation($"Total {certificatesCloseToExpire.Count} certificates close to expire found.");
 
             if (certificatesCloseToExpire?.Count > 0)
             {

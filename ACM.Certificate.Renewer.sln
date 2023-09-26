@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{
 		iac\terraform\locals.tf = iac\terraform\locals.tf
 		iac\terraform\main.tf = iac\terraform\main.tf
 		iac\terraform\outputs.tf = iac\terraform\outputs.tf
+		iac\terraform\poc.tfvars = iac\terraform\poc.tfvars
 		iac\terraform\prod.tfvars = iac\terraform\prod.tfvars
 		iac\terraform\README.md = iac\terraform\README.md
 		iac\terraform\variables.tf = iac\terraform\variables.tf

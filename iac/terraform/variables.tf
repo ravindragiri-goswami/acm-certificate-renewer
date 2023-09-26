@@ -10,7 +10,7 @@ variable "environment" {
 variable "region" {
   description = "Name of the region resources will be created in."
   type        = string
-  default     = "us-east-1"
+  default     = null
 }
 
 variable "profile" {
@@ -22,6 +22,12 @@ variable "namespace" {
   type        = string
   default     = "arc"
   description = "Identifier used to namespace resources, i.e. project name, company name, etc."
+}
+
+variable "create_ecr_repository" {
+  description = "Set to true to create the ecr repository, or false to skip creation"
+  type        = bool
+  default     = true # Change this value as needed
 }
 
 variable "kms_key_admin_arns" {
